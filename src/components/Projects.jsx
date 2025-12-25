@@ -2,6 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './Projects.css';
 import naviImage from '../assets/navi-rewards.png';
+import swiggyImage from '../assets/swiggy-incognito.jpg';
+import blinkitImage from '../assets/blinkit-heuristics.jpg';
+import hingeImage from '../assets/hinge-date.jpg';
+import upiImage from '../assets/credit-upi.jpg';
 
 const Projects = () => {
     return (
@@ -31,7 +35,8 @@ const Projects = () => {
                             link: "https://assets.nextleap.app/submissions/Swiggy-LIP2-f917182b-d0ac-47f1-ac7e-ce58b17b426f.pdf",
                             tags: ["Food Tech", "Growth"],
                             summary: "Product teardown of Swiggy’s Incognito Mode feature, evaluating user experience and proposing a UX improvement.",
-                            shortDescription: "Swiggy Incognito Mode"
+                            shortDescription: "Swiggy Incognito Mode",
+                            image: swiggyImage
                         },
                         {
                             title: "Expense Ease",
@@ -45,21 +50,24 @@ const Projects = () => {
                             link: "https://assets.nextleap.app/submissions/LIP45-627ba169-13db-46ea-93ed-dd16491da01c.pdf",
                             tags: ["Strategy", "Case Study"],
                             summary: "Heuristic evaluation of Blinkit’s user experience across core flows, identifying usability gaps through Jakob Nielsen’s principles.",
-                            shortDescription: "BlinkIt | Usability Heuristics"
+                            shortDescription: "BlinkIt | Usability Heuristics",
+                            image: blinkitImage
                         },
                         {
                             title: "Building Wireframe",
                             link: "https://assets.nextleap.app/submissions/LIP3-DatePlanningAssistant-f4390a7a-a0fc-4a2c-84fb-96f0c40940dd.pdf",
                             tags: ["Lifestyle", "Planning"],
                             summary: "Concept and UX design of a Date Planning AI Assistant feature for dating apps, focused on streamlining planning and coordination.",
-                            shortDescription: "Hinge Date Planning Assistant"
+                            shortDescription: "Hinge Date Planning Assistant",
+                            image: hingeImage
                         },
                         {
                             title: "Case Study",
                             link: "https://assets.nextleap.app/submissions/CaseStudyCreditonUPImarketinIndia1-7fc1db7c-830e-480d-a572-1e3da8a3d05f.pdf",
                             tags: ["FinTech", "UPI"],
                             summary: "Case study on the Credit on UPI market in India, analyzing growth, value propositions, and trends in credit services.",
-                            shortDescription: "Credit on UPI market in India"
+                            shortDescription: "Credit on UPI market in India",
+                            image: upiImage
                         }
                     ].map((project, index) => (
                         <motion.a
