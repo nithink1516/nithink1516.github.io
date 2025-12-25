@@ -81,8 +81,8 @@ const Travel = () => {
                         }
                     </Geographies>
 
-                    {locations.map(({ name, coordinates, description }) => (
-                        <Marker key={name} coordinates={coordinates} onClick={() => setSelectedLocation({ name, description })}>
+                    {locations.map(({ name, coordinates, description, images }) => (
+                        <Marker key={name} coordinates={coordinates} onClick={() => setSelectedLocation({ name, description, images })}>
                             <circle
                                 r={6}
                                 fill="#6366f1"
