@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './About.css';
-import nithinImg from '../assets/nithin-updated.jpg';
+import nithinImg from '../assets/nithin-updated-v2.jpg';
 
 const About = () => {
     return (
