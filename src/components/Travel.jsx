@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 import './Travel.css';
 
 const INDIA_TOPO_JSON = "/india-states.json";
@@ -70,13 +72,19 @@ const Travel = () => {
 
                     {locations.map(({ name, coordinates, description }) => (
                         <Marker key={name} coordinates={coordinates} onClick={() => setSelectedLocation({ name, description })}>
-                            <circle r={6} fill="#6366f1" className="marker-circle" stroke="#fff" strokeWidth={2} />
-                            <text textAnchor="middle" y={-10} className="marker-text" fill="#fff">
-                                {name}
-                            </text>
+                            <circle
+                                r={6}
+                                fill="#6366f1"
+                                className="marker-circle"
+                                stroke="#fff"
+                                strokeWidth={2}
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content={name}
+                            />
                         </Marker>
                     ))}
                 </ComposableMap>
+                <Tooltip id="my-tooltip" style={{ backgroundColor: "#333", color: "#fff", borderRadius: "8px" }} />
             </div>
 
             <div className={`location-modal-overlay ${selectedLocation ? 'active' : ''}`} onClick={() => setSelectedLocation(null)}>
