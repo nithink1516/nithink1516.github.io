@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './Projects.css';
+import naviImage from '../assets/navi-rewards.png';
 
 const Projects = () => {
     return (
@@ -22,7 +23,8 @@ const Projects = () => {
                             link: "https://assets.nextleap.app/submissions/ProductTeardown-fd7865c6-bb46-4637-a41c-d99075d368f4.pdf",
                             tags: ["Product", "Strategy"],
                             summary: "Detailed product teardown of Navi UPI’s Rewards feature, analyzing user experience and proposing a feature improvement.",
-                            shortDescription: "Navi Rewards"
+                            shortDescription: "Navi Rewards",
+                            image: naviImage
                         },
                         {
                             title: "Product Teardown",
@@ -72,7 +74,8 @@ const Projects = () => {
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ y: -10 }}
                         >
-                            <div className="project-image-placeholder item-type-pdf">
+                            <div className={`project-image-placeholder ${!project.image ? 'item-type-pdf' : ''}`}>
+                                {project.image && <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
                                 <div className="project-overlay">
                                     <p>{project.summary}</p>
                                 </div>
