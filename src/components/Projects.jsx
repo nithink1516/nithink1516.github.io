@@ -6,6 +6,9 @@ import swiggyImage from '../assets/swiggy-incognito.jpg';
 import blinkitImage from '../assets/blinkit-heuristics.jpg';
 import hingeImage from '../assets/hinge-date.jpg';
 import upiImage from '../assets/credit-upi.jpg';
+import cardwiseImage from '../assets/cardwise.png';
+import policypalImage from '../assets/policypal.png';
+import financeImage from '../assets/finance-calculators.png';
 
 const Projects = () => {
     return (
@@ -119,21 +122,24 @@ const Projects = () => {
                             shortDescription: "Smart credit card selection tool",
                             summary: "Help people choose the best credit card based on personalized inputs. Makes comparing rewards, fees, and benefits simple and tailored to individual spending patterns.",
                             tags: ["Finance", "AI", "Comparison"],
-                            link: "https://creditcard-choose.lovable.app/"
+                            link: "https://creditcard-choose.lovable.app/",
+                            image: cardwiseImage
                         },
                         {
                             title: "PolicyPal Selector",
                             shortDescription: "Insurance decision helper",
                             summary: "Simplifies choosing health, life, and vehicle insurance by guiding users through personalized questions to find policies that match their needs and budget.",
                             tags: ["Insurance", "Health", "Decision Tool"],
-                            link: "https://policypal-selector.lovable.app/"
+                            link: "https://policypal-selector.lovable.app/",
+                            image: policypalImage
                         },
                         {
                             title: "Can You Afford It?",
                             shortDescription: "20+ financial calculators",
                             summary: "A lot of people regret making wrong financial decisions. These 20 tools help someone make better financial decisions - from home buying to retirement planning, get instant answers to your money questions.",
                             tags: ["Calculators", "Planning", "Money"],
-                            link: "https://finance-tools-livid.vercel.app/"
+                            link: "https://finance-tools-livid.vercel.app/",
+                            image: financeImage
                         }
                     ].map((project, index) => (
                         <motion.a
@@ -148,7 +154,8 @@ const Projects = () => {
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ y: -10 }}
                         >
-                            <div className="project-image-placeholder">
+                            <div className={`project-image-placeholder ${!project.image ? 'item-type-pdf' : ''}`}>
+                                {project.image && <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
                                 <div className="project-overlay">
                                     <p>{project.summary}</p>
                                 </div>
@@ -168,7 +175,7 @@ const Projects = () => {
 
                 <p className="projects-note">More details coming soon...</p>
             </div>
-        </section >
+        </section>
     );
 };
 
