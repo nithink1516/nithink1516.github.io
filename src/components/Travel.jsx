@@ -21,6 +21,12 @@ import gokarna7 from '../assets/travel/gokarna/gokarna7.jpg';
 import gokarna8 from '../assets/travel/gokarna/gokarna8.jpg';
 import gokarna9 from '../assets/travel/gokarna/gokarna9.jpg';
 
+import honnavar1 from '../assets/travel/honnavar/honnavar1.jpg';
+import honnavar2 from '../assets/travel/honnavar/honnavar2.jpg';
+import honnavar3 from '../assets/travel/honnavar/honnavar3.jpg';
+import honnavar4 from '../assets/travel/honnavar/honnavar4.jpg';
+import honnavar5 from '../assets/travel/honnavar/honnavar5.jpg';
+
 const INDIA_TOPO_JSON = "/india-states.json";
 
 const locations = [
@@ -44,7 +50,12 @@ const locations = [
     { name: "Hampi", coordinates: [76.460, 15.335], description: "Ruins of the Vijayanagara Empire." },
     { name: "Sriharikota", coordinates: [80.210, 13.742], description: "India's Spaceport." },
     { name: "Tirupati", coordinates: [79.420, 13.636], description: "Spiritual capital of Andhra Pradesh." },
-    { name: "Honnavar", coordinates: [74.444, 14.280], description: "Coastal beauty and backwaters." },
+    {
+        name: "Honnavar",
+        coordinates: [74.444, 14.280],
+        description: "Coastal beauty and backwaters.",
+        images: [honnavar1, honnavar2, honnavar3, honnavar4, honnavar5]
+    },
 ];
 
 const Travel = () => {
