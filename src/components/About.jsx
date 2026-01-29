@@ -20,9 +20,7 @@ const About = () => {
                             I'm <span className="highlight">Nithin</span>, a 22-year-old Product Growth specialist and Engineer from Bangalore.
                         </p>
                         <p className="about-description">
-                            I bridge the gap between technical engineering and product growth.
-                            Graduated from <span className="highlight">PES University</span> in 2025 (B.Tech ECE).
-                            My passion lies in building impactful products and scaling them from 0 to 1 and beyond.
+                            Drawn to small teams, fast execution, and 0→1 problems. I care about doing meaningful work, moving quickly, and getting better every day. I chase steep learning curves, real ownership, and work that compounds.
                         </p>
 
                         <div className="about-stats">

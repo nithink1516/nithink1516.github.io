@@ -6,26 +6,32 @@ const Hero = () => {
     return (
         <section className="hero-section">
             <div className="hero-background">
-                <motion.div
-                    className="glow-orb orb-1"
-                    animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div
-                    className="glow-orb orb-2"
-                    animate={{ x: [0, -70, 0], y: [0, 60, 0], scale: [1, 1.5, 1] }}
-                    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                />
+                {/* Interactive background is now global */}
             </div>
 
             <div className="hero-content">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     <h1 className="hero-title">
-                        NITHIN<span className="dot">.</span>
+                        <motion.span
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            whileHover={{ scale: 1.05 }}
+                        >
+                            NITHIN
+                        </motion.span>
+                        <motion.span
+                            className="dot"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.4, delay: 0.8, type: "spring" }}
+                        >
+                            .
+                        </motion.span>
                     </h1>
                 </motion.div>
 

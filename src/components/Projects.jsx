@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import './Projects.css';
 import naviImage from '../assets/navi-rewards.png';
 import swiggyImage from '../assets/swiggy-incognito.jpg';
@@ -9,6 +9,54 @@ import upiImage from '../assets/credit-upi.jpg';
 import cardwiseImage from '../assets/cardwise.png';
 import policypalImage from '../assets/policypal.png';
 import financeImage from '../assets/finance-calculators.png';
+
+const ProjectCard = ({ project, index }) => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+    return (
+        <motion.a
+            ref={ref}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card glass-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            whileHover={{ y: -15, scale: 1.02, zIndex: 10 }}
+            style={{ y }}
+        >
+            <div className={`project-image-placeholder ${!project.image ? 'item-type-pdf' : ''}`}>
+                {project.image && <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                />}
+                <div className="project-overlay">
+                    <p>{project.summary}</p>
+                </div>
+            </div>
+            <div className="project-content">
+                <h3>{project.title}</h3>
+                <p>{project.shortDescription}</p>
+                <div className="project-tags">
+                    {project.tags.map((tag, i) => (
+                        <span key={i}>{tag}</span>
+                    ))}
+                </div>
+            </div>
+        </motion.a>
+    );
+};
 
 const Projects = () => {
     return (
@@ -73,34 +121,72 @@ const Projects = () => {
                             image: upiImage
                         }
                     ].map((project, index) => (
-                        <motion.a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={index}
-                            className="project-card glass-card"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -10 }}
-                        >
-                            <div className={`project-image-placeholder ${!project.image ? 'item-type-pdf' : ''}`}>
-                                {project.image && <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
-                                <div className="project-overlay">
-                                    <p>{project.summary}</p>
-                                </div>
-                            </div>
-                            <div className="project-content">
-                                <h3>{project.title}</h3>
-                                <p>{project.shortDescription}</p>
-                                <div className="project-tags">
-                                    {project.tags.map((tag, i) => (
-                                        <span key={i}>{tag}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.a>
+                        <ProjectCard key={index} project={project} index={index} />
+                    ))}
+                </div>
+
+                <div className="section-spacer" style={{ height: '4rem' }}></div>
+
+                <motion.h2
+                    className="section-title"
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                >
+                    AI Projects
+                </motion.h2>
+
+                <div className="projects-grid">
+                    {[
+                        {
+                            title: "Product Teardown",
+                            link: "https://assets.nextleap.app/submissions/ProductTeardown-fd7865c6-bb46-4637-a41c-d99075d368f4.pdf",
+                            tags: ["Product", "Strategy"],
+                            summary: "Detailed product teardown of Navi UPI’s Rewards feature, analyzing user experience and proposing a feature improvement.",
+                            shortDescription: "Navi Rewards",
+                            image: naviImage
+                        },
+                        {
+                            title: "Product Teardown",
+                            link: "https://assets.nextleap.app/submissions/Swiggy-LIP2-f917182b-d0ac-47f1-ac7e-ce58b17b426f.pdf",
+                            tags: ["Food Tech", "Growth"],
+                            summary: "Product teardown of Swiggy’s Incognito Mode feature, evaluating user experience and proposing a UX improvement.",
+                            shortDescription: "Swiggy Incognito Mode",
+                            image: swiggyImage
+                        },
+                        {
+                            title: "Expense Ease",
+                            link: "https://assets.nextleap.app/submissions/NLExpenseEase-2717f0ca-aaae-42bb-8564-f29569b678c8.pdf",
+                            tags: ["FinTech", "UX"],
+                            summary: "Worked on a product solution to simplify the process of submitting, tracking, and reimbursing work-related expenses. Built an MVP that focused on \"Automated Receipt Capture with AI Policy Check\".",
+                            shortDescription: "Expense tracking solution"
+                        },
+                        {
+                            title: "Analysing User Experiences",
+                            link: "https://assets.nextleap.app/submissions/LIP45-627ba169-13db-46ea-93ed-dd16491da01c.pdf",
+                            tags: ["Strategy", "Case Study"],
+                            summary: "Heuristic evaluation of Blinkit’s user experience across core flows, identifying usability gaps through Jakob Nielsen’s principles.",
+                            shortDescription: "BlinkIt | Usability Heuristics",
+                            image: blinkitImage
+                        },
+                        {
+                            title: "Building Wireframe",
+                            link: "https://assets.nextleap.app/submissions/LIP3-DatePlanningAssistant-f4390a7a-a0fc-4a2c-84fb-96f0c40940dd.pdf",
+                            tags: ["Lifestyle", "Planning"],
+                            summary: "Concept and UX design of a Date Planning AI Assistant feature for dating apps, focused on streamlining planning and coordination.",
+                            shortDescription: "Hinge Date Planning Assistant",
+                            image: hingeImage
+                        },
+                        {
+                            title: "Case Study",
+                            link: "https://assets.nextleap.app/submissions/CaseStudyCreditonUPImarketinIndia1-7fc1db7c-830e-480d-a572-1e3da8a3d05f.pdf",
+                            tags: ["FinTech", "UPI"],
+                            summary: "Case study on the Credit on UPI market in India, analyzing growth, value propositions, and trends in credit services.",
+                            shortDescription: "Credit on UPI market in India",
+                            image: upiImage
+                        }
+                    ].map((project, index) => (
+                        <ProjectCard key={index} project={project} index={index} />
                     ))}
                 </div>
 
@@ -142,34 +228,7 @@ const Projects = () => {
                             image: financeImage
                         }
                     ].map((project, index) => (
-                        <motion.a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={index}
-                            className="project-card glass-card"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -10 }}
-                        >
-                            <div className={`project-image-placeholder ${!project.image ? 'item-type-pdf' : ''}`}>
-                                {project.image && <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
-                                <div className="project-overlay">
-                                    <p>{project.summary}</p>
-                                </div>
-                            </div>
-                            <div className="project-content">
-                                <h3>{project.title}</h3>
-                                <p>{project.shortDescription}</p>
-                                <div className="project-tags">
-                                    {project.tags.map((tag, i) => (
-                                        <span key={i}>{tag}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.a>
+                        <ProjectCard key={index} project={project} index={index} />
                     ))}
                 </div>
 

@@ -52,16 +52,29 @@ const Experience = () => {
                 </motion.h2>
 
                 <div className="timeline">
+                    <motion.div
+                        className="timeline-line"
+                        initial={{ height: 0 }}
+                        whileInView={{ height: '100%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                    />
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
                             className="timeline-item"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ delay: index * 0.2, duration: 0.5 }}
                         >
-                            <div className="timeline-dot"></div>
+                            <motion.div
+                                className="timeline-dot"
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.2 + 0.2, type: "spring" }}
+                            />
                             <div className="timeline-content glass-card">
                                 <div className="exp-header">
                                     <h3 className="exp-role">{exp.role}</h3>

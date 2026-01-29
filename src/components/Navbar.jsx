@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Magnetic from './Magnetic';
 import './Navbar.css';
-
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
+        console.log("DEBUG: Navbar Mounted - V1"); // Debugging
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
@@ -15,18 +16,20 @@ const Navbar = () => {
 
     return (
         <motion.nav
-            className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}
+            className={`navbar ${scrolled ? 'scrolled glass-strong' : ''}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
         >
             <div className="navbar-container">
-                <a href="#" className="logo">Nithin.</a>
+                <Magnetic className="logo-container">
+                    <a href="#" className="logo">Nithin. <span style={{ fontSize: '0.8rem', color: 'red' }}>DEBUG: V1</span></a>
+                </Magnetic>
 
                 <ul className="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><Magnetic><a href="#about">About</a></Magnetic></li>
+                    <li><Magnetic><a href="#experience">Experience</a></Magnetic></li>
+                    <li><Magnetic><a href="#projects">Projects</a></Magnetic></li>
                 </ul>
             </div>
         </motion.nav>

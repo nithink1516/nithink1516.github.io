@@ -10,13 +10,26 @@
 
 .timeline {
     position: relative;
+    max-width: 800px;
+    margin: 0 auto;
     padding-left: 2rem;
-    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-line {
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary), transparent);
+    transform: translateX(-50%);
+    z-index: 0;
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: 4rem;
+    padding-left: 2rem;
+    z-index: 1;
 }
 
 .timeline-item:last-child {
@@ -25,13 +38,25 @@
 
 .timeline-dot {
     position: absolute;
-    left: -2.6rem;
-    top: 0.5rem;
-    width: 1rem;
-    height: 1rem;
-    background: var(--accent-primary);
+    left: 2rem;
+    top: 0;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
+    background: var(--accent-primary);
+    transform: translate(-50%, 0);
+    /* Align center with line */
     box-shadow: 0 0 10px var(--accent-glow);
+    z-index: 2;
+    margin-left: -8px;
+    /* Offset by half width because left: 2rem is the line center */
+}
+
+/* Reset manual margin-left logic to rely on absolute positioning */
+.timeline-dot {
+    margin-left: 0;
+    transform: translate(-50%, 10px);
+    /* Push down slightly to align with card top */
 }
 
 .timeline-content {
