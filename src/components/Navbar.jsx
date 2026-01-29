@@ -23,7 +23,7 @@ const Navbar = () => {
         >
             <div className="navbar-container">
                 <Magnetic className="logo-container">
-                    <a href="#" className="logo">Nithin. <span style={{ fontSize: '0.8rem', color: 'red' }}>DEBUG: V1</span></a>
+                    <a href="#" className="logo">Nithin.</a>
                 </Magnetic>
 
                 <ul className="nav-links">
