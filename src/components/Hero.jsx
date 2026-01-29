@@ -6,7 +6,8 @@ const Hero = () => {
     return (
         <section className="hero-section">
             <div className="hero-background">
-                {/* Interactive background is now global */}
+                <div className="glow-orb orb-1"></div>
+                <div className="glow-orb orb-2"></div>
             </div>
 
             <div className="hero-content">
