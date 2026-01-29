@@ -42,8 +42,8 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
                 >
-                    <p className="hero-subtitle">Product Growth <span className="separator">×</span> Engineering</p>
-                    <p className="hero-tagline">Building scaling 0 to 1 and beyond.</p>
+                    <p className="hero-subtitle">Product <span className="separator">×</span> Startups</p>
+                    <p className="hero-tagline">Love building 0 to 1</p>
                 </motion.div>
             </div>
 
