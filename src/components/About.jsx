@@ -17,7 +17,7 @@ const About = () => {
                     >
                         <h2 className="section-title">About Me</h2>
                         <p className="about-text">
-                            I'm <span className="highlight">Nithin</span>. Curiosity shapes how I see the world, and startups are where that curiosity comes alive.
+                            Curiosity shapes how I see the world, and startups are where that curiosity comes alive.
                         </p>
                         <p className="about-description">
                             Drawn to small teams, fast execution, and 0→1 problems. I care about doing meaningful work, moving quickly, and getting better every day. I chase steep learning curves, real ownership, and work that compounds.
